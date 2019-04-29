@@ -1,0 +1,27 @@
+.App {
+  position: relative;
+  /* position: relative; */
+  margin-top: -500px;
+}
+.main-header {
+  margin-top: 500px;
+  font-size: 100px;
+  text-align: center;
+}
+.image-grid {
+  position: relative;
+  margin: 20%;
+  height: 1500px;
+}
+
+.submitted {
+  margin-left: 500px;
+  margin-top: 500px;
+  position: relative;
+  align-content: center;
+  font-size: 120px;
+}
+
+.name-form {
+  margin-top: 20px;
+}

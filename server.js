@@ -32,14 +32,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger("dev"));
 
-// ****** Client Route *********
+// ****** Client Route *******
 // Serve any static files built by React
 app.use(express.static(path.join(__dirname, "client/build")));
 router.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build", "index.html"));
 });
 
-// ****** Db Route
+// ****** Db Route *******
 // this is our create methid
 // this method adds new data in our database
 router.post("/putData", (req, res) => {

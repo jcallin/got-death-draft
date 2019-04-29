@@ -19,13 +19,6 @@ class MainPage extends Component {
     this.putDataToDB = this.putDataToDB.bind(this);
   }
 
-  // thumbnailStyle() {
-  //   return {
-  //     // width: "100px"
-  //     objectFit: "contain"
-  //   };
-  // }
-
   tileViewportStyle() {
     var nanoBase64Backgorund = {};
     if (this.props.item.nano) {
@@ -85,7 +78,7 @@ class MainPage extends Component {
   putDataToDB = name => {
     this.setState({ submitted: true });
     console.log(`Posting ${name} and data ${this.state.dead}`);
-    axios.post("http://localhost:80/api/putData", {
+    axios.post("https://got-draft-jcallin.structure.sh/api/putData", {
       name: name,
       dead: this.state.dead
     });

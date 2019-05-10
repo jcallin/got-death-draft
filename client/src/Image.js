@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
-import CheckButton from "./CheckButton.js";
 
 class Image extends Component {
   constructor(props) {
@@ -122,22 +121,6 @@ class Image extends Component {
     };
   }
 
-  renderCheckButton() {
-    return (
-      <CheckButton
-        key="Select"
-        index={this.props.index}
-        color={"rgba(255, 255, 255, 0.7)"}
-        selectedColor={"#4285f4"}
-        hoverColor={"rgba(255, 255, 255, 1)"}
-        isSelected={this.props.item.isSelected}
-        isSelectable={this.props.isSelectable}
-        onClick={this.props.isSelectable ? this.props.onSelectImage : null}
-        parentHover={this.state.hover}
-      />
-    );
-  }
-
   render() {
     var alt = this.props.item.alt ? this.props.item.alt : "";
     var tags =
@@ -171,7 +154,7 @@ class Image extends Component {
           key={"custom-overlay-" + this.props.index}
           style={{
             pointerEvents: "none",
-            opacity: this.state.hover ? 1 : 0,
+            opacity: this.state.hover || this.props.item.isSelected ? 1 : 0,
             position: "absolute",
             height: "100%",
             width: "100%"
@@ -217,7 +200,7 @@ class Image extends Component {
             width: "100%"
           }}
         >
-          {this.renderCheckButton()}
+          {/* {this.renderCheckButton()} */}
         </div>
 
         <div

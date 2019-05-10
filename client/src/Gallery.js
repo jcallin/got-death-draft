@@ -393,4 +393,4 @@ Gallery.defaultProps = {
   showLightboxThumbnails: false
 };
 
-module.exports = Gallery;
+export default Gallery;

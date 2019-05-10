@@ -1,24 +1,51 @@
 .App {
-  position: relative;
-  /* position: relative; */
-  margin-top: -500px;
+  align-content: center;
 }
+
+.main-page {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
 .main-header {
-  margin-top: 500px;
+  margin-left: 10%;
+  margin-right: 10%;
   font-size: 100px;
   text-align: center;
 }
+
+.main-header::after {
+  content: url("https://i.pinimg.com/originals/9e/5c/eb/9e5ceb24a3da8028ad558eccf0a92cea.png");
+  position: absolute;
+  margin-top: 70px;
+  opacity: 0.2;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.death-overlay {
+  opacity: 0.85;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
 .image-grid {
   position: relative;
-  margin: 20%;
-  height: 1500px;
+}
+
+.btn-primary {
+  border: 0 none;
+  background-color: black;
 }
 
 .submitted {
-  margin-left: 500px;
-  margin-top: 500px;
-  position: relative;
-  align-content: center;
+  align-self: center;
   font-size: 120px;
 }
 

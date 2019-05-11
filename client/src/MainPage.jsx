@@ -79,14 +79,15 @@ class MainPage extends Component {
   // to create new query into our data base
   putDataToDB = name => {
     this.setState({ submitted: true });
-    const api = "https://got-draft-jcallin.structure.sh/api/putData";
+    const api = "https://got-death-draft-jcallin.structure.sh/api/putData";
     console.log(
       `Posting submitter ${name} and data ${this.state.dead} to ${api}`
     );
     if (process.env.NODE_ENV !== "development") {
       axios.post(api, {
         name: name,
-        dead: this.state.dead
+        dead: this.state.dead,
+        submissionTime: new Date(new Date().toUTCString())
       });
       this.setState({ submitted: true });
     }
@@ -104,16 +105,16 @@ class MainPage extends Component {
 
     if (this.state.submitted) {
       return (
-        <>
-          <div className="submitted">Thanks for playing!</div>
+        <div className="submitted">
+          <div>Thanks for playing!</div>
           <button
             type="button"
-            className="btn btn-primary"
+            className="btn btn-primary pick-again-btn"
             onClick={() => this.setState({ submitted: false })}
           >
             Pick again
           </button>
-        </>
+        </div>
       );
     } else {
       return (
@@ -140,11 +141,12 @@ class MainPage extends Component {
                     onChange={e => this.setState({ name: e.target.value })}
                     id="input-name"
                     placeholder="Enter your name"
+                    required
                   />
                   <small id="emailHelp" className="form-text text-muted" />
                   <button
                     type="button"
-                    className="btn btn-primary"
+                    className="btn btn-primary submit-btn"
                     onClick={() => this.putDataToDB(this.state.name)}
                   >
                     Submit

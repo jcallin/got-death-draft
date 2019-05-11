@@ -44,11 +44,27 @@
   background-color: black;
 }
 
+.submit-btn {
+  width: 100%;
+}
+
+.pick-again-btn {
+  width: 200px;
+  height: 75px;
+}
+
 .submitted {
-  align-self: center;
   font-size: 120px;
+  text-align: center;
+  align-content: center;
+}
+
+.form-control {
+  margin-top: 80px;
+  text-align: center;
 }
 
 .name-form {
-  margin-top: 20px;
+  margin-left: 20%;
+  margin-right: 20%;
 }

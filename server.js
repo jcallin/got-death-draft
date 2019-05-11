@@ -46,7 +46,7 @@ router.post("/putData", (req, res) => {
   let data = new Data();
   console.log(`Received request: ${req.body}`);
 
-  const { name, dead } = req.body;
+  const { name, dead, submissionTime } = req.body;
 
   if ((!name && name !== 0) || !dead) {
     return res.json({
@@ -56,6 +56,7 @@ router.post("/putData", (req, res) => {
   }
   data.dead = dead;
   data.name = name;
+  data.submissionTime = submissionTime;
   data.save(err => {
     if (err) return res.json({ success: false, error: err });
     return res.json({ success: true });

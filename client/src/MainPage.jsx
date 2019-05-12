@@ -106,7 +106,7 @@ class MainPage extends Component {
     if (this.state.submitted) {
       return (
         <div className="submitted">
-          <div>Thanks for playing!</div>
+          <div>Thanks for picking!</div>
           <button
             type="button"
             className="btn btn-primary pick-again-btn"

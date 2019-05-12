@@ -178,14 +178,14 @@ class Image extends Component {
       <div
         className="ReactGridGallery_tile"
         key={"tile-" + this.props.index}
-        onMouseEnter={e => this.setState({ hover: true })}
-        onMouseLeave={e => this.setState({ hover: false })}
+        // TODO: Fix for mobile (sticky hover)
+        // onMouseEnter={e => this.setState({ hover: true })}
+        // onMouseLeave={e => this.setState({ hover: false })}
         style={{
           margin: this.props.margin,
           WebkitUserSelect: "none",
           position: "relative",
           float: "left",
-          background: "#eee",
           padding: "0px"
         }}
       >

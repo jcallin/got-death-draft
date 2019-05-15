@@ -15,8 +15,6 @@ class MainPage extends Component {
       submitted: false
     };
 
-    console.log(this.state.dead);
-
     this.onSelectImage = this.onSelectImage.bind(this);
     this.putDataToDB = this.putDataToDB.bind(this);
   }
@@ -80,9 +78,6 @@ class MainPage extends Component {
   putDataToDB = name => {
     this.setState({ submitted: true });
     const api = "https://got-death-draft-jcallin.structure.sh/api/putData";
-    console.log(
-      `Posting submitter ${name} and data ${this.state.dead} to ${api}`
-    );
     if (process.env.NODE_ENV !== "development") {
       axios.post(api, {
         name: name,
@@ -107,6 +102,15 @@ class MainPage extends Component {
       return (
         <div className="submitted">
           <div>Thanks for picking!</div>
+          <p
+            className="sub-header"
+            style={{ marginLeft: "10px", marginRight: "10px" }}
+          >
+            We take your last pick before this week's episode airs
+          </p>
+          <p className="sub-header">
+            Feel free to pick again, just use the same name
+          </p>
           <button
             type="button"
             className="btn btn-primary pick-again-btn"
@@ -120,6 +124,10 @@ class MainPage extends Component {
       return (
         <>
           <div className="main-header">The Game of Thrones Death Draft</div>
+          <p className="sub-header">
+            Pick who dies in Season 8 Episode 5! Best guess and stats posted
+            after the episode. Submit again next week before the finale.
+          </p>
           <div className="main-page">
             <div className="image-grid">
               <Gallery

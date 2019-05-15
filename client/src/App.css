@@ -19,12 +19,46 @@ body {
 }
 
 .main-header {
+  margin-top: 40px;
   margin-left: 5%;
   margin-right: 5%;
   --min-font-size: 40px;
   --min-viewport-width: 375px;
+
+  --min-font-size-calc: 40;
+  --max-font-size-calc: 120;
+
+  --min-viewport-size-calc: 375;
+  --max-viewport-size-calc: 1440;
   font-size: calc(
-    var(--min-font-size) + 80 * ((100vw - var(--min-viewport-width)) / 1065)
+    var(--min-font-size) +
+      (var(--max-font-size-calc) - var(--min-font-size-calc)) *
+      (
+        (100vw - var(--min-viewport-width)) /
+          (var(--max-viewport-size-calc) - var(--min-viewport-size-calc))
+      )
+  );
+  text-align: center;
+}
+
+.sub-header {
+  margin-left: 20%;
+  margin-right: 20%;
+  --min-font-size: 20px;
+  --min-viewport-width: 375px;
+
+  --min-font-size-calc: 10;
+  --max-font-size-calc: 30;
+
+  --min-viewport-size-calc: 375;
+  --max-viewport-size-calc: 1440;
+  font-size: calc(
+    var(--min-font-size) +
+      (var(--max-font-size-calc) - var(--min-font-size-calc)) *
+      (
+        (100vw - var(--min-viewport-width)) /
+          (var(--max-viewport-size-calc) - var(--min-viewport-size-calc))
+      )
   );
   text-align: center;
 }
@@ -70,9 +104,26 @@ body {
 }
 
 .submitted {
-  font-size: 120px;
+  margin-top: 40px;
+  margin-left: 5%;
+  margin-right: 5%;
+  --min-font-size: 40px;
+  --min-viewport-width: 375px;
+
+  --min-font-size-calc: 40;
+  --max-font-size-calc: 120;
+
+  --min-viewport-size-calc: 375;
+  --max-viewport-size-calc: 1440;
+  font-size: calc(
+    var(--min-font-size) +
+      (var(--max-font-size-calc) - var(--min-font-size-calc)) *
+      (
+        (100vw - var(--min-viewport-width)) /
+          (var(--max-viewport-size-calc) - var(--min-viewport-size-calc))
+      )
+  );
   text-align: center;
-  align-content: center;
 }
 
 .pick-again-btn {

@@ -9,7 +9,6 @@ const path = require("path");
 const port = 80;
 const app = express();
 app.use(cors());
-const router = express.Router();
 
 var mongoPassword = process.env.MONGO_PASSWORD;
 
@@ -35,14 +34,14 @@ app.use(logger("dev"));
 // ****** Client Route *******
 // Serve any static files built by React
 app.use(express.static(path.join(__dirname, "client/build")));
-router.get("/", (req, res) => {
+app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build", "index.html"));
 });
 
 // ****** Db Route *******
 // this is our create methid
 // this method adds new data in our database
-router.post("/putData", (req, res) => {
+app.post("/api/putData", (req, res) => {
   let data = new Data();
   console.log(`Received request: ${req.body}`);
 
@@ -62,7 +61,34 @@ router.post("/putData", (req, res) => {
   });
 });
 
-// append /api for our http requests
-app.use("/api", router);
+app.get("/api/s8e5-data/json", function(req, res) {
+  console.log("A user requested all json data");
+  Data.find({}, function(err, users) {
+    res.send(users);
+  });
+});
+
+app.get("/api/s8e5-data/csv", function(req, res) {
+  console.log("A user requested all csv data");
+  Data.find({}, function(err, users) {
+    res.send(ConvertToCSV(JSON.stringify(users)));
+  });
+});
+
+// JSON to CSV Converter
+function ConvertToCSV(objArray) {
+  var array = typeof objArray != "object" ? JSON.parse(objArray) : objArray;
+  var str = "";
+
+  for (var i = 0; i < array.length; i++) {
+    var line = "";
+    for (var index in array[i]) {
+      if (line != "") line += ",";
+      line += array[i][index];
+    }
+    str += line + "\r\n";
+  }
+  return str;
+}
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

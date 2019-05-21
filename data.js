@@ -6,9 +6,10 @@ const Schema = mongoose.Schema;
 const DataSchema = new Schema(
   {
     name: String,
-    dead: [String]
+    dead: [String],
+    throne: String
   },
-  { timestamps: true }
+  { timestamps: true, collection: "finale" }
 );
 
 // export the new Schema so we could modify it using Node.js

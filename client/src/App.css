@@ -2,6 +2,7 @@
   align-content: center;
   display: flex;
   flex-direction: column;
+  font-family: "Open Sans", sans-serif;
 }
 
 html body {
@@ -68,6 +69,15 @@ body {
   margin-right: 15%;
 }
 
+/* Super important to get the correct grid gallery height. See examples for React-Grid-Gallery repo */
+.grid-gallery-container {
+  margin-top: 30px;
+  display: block;
+  min-height: 1px;
+  width: 100%;
+  overflow: auto;
+}
+
 .main-header::after {
   content: url("./resources/iron-throne.png");
   position: absolute;
@@ -80,11 +90,15 @@ body {
   z-index: -1;
 }
 
-.death-overlay {
+.thumbnail-overlay {
   opacity: 0.85;
   object-fit: contain;
   width: 100%;
   height: 100%;
+}
+
+.who-will {
+  margin-top: 40px;
 }
 
 .name-form {
@@ -93,7 +107,6 @@ body {
 }
 
 .form-control {
-  margin-top: 80px;
   text-align: center;
 }
 
@@ -129,4 +142,54 @@ body {
 .pick-again-btn {
   width: 200px;
   height: 75px;
+}
+
+.summary-announcement {
+  --min-font-size: 18px;
+  --min-viewport-width: 375px;
+
+  --min-font-size-calc: 10;
+  --max-font-size-calc: 20;
+
+  --min-viewport-size-calc: 375;
+  --max-viewport-size-calc: 1440;
+  font-size: calc(
+    var(--min-font-size) +
+      (var(--max-font-size-calc) - var(--min-font-size-calc)) *
+      (
+        (100vw - var(--min-viewport-width)) /
+          (var(--max-viewport-size-calc) - var(--min-viewport-size-calc))
+      )
+  );
+}
+
+.histogram {
+  width: 700px;
+  height: 800px;
+}
+
+.summary-table {
+  width: 900px;
+  height: 1800px;
+}
+
+.plotly-embed {
+  display: block;
+  margin-top: 10px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Resize plotly for... */
+/* Iphone X */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) {
+  .plotly-embed {
+    width: 375px;
+  }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+  .plotly-embed {
+    width: 375px;
+  }
 }

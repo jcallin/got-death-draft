@@ -11,13 +11,14 @@ const data = {
     },
     {
       name: "Jamie",
-      dead: false,
+      dead: true,
       src:
         "https://upload.wikimedia.org/wikipedia/en/thumb/b/b4/Jaime_Lannister-Nikolaj_Coster-Waldau.jpg/220px-Jaime_Lannister-Nikolaj_Coster-Waldau.jpg",
       thumbnail:
         "https://upload.wikimedia.org/wikipedia/en/thumb/b/b4/Jaime_Lannister-Nikolaj_Coster-Waldau.jpg/220px-Jaime_Lannister-Nikolaj_Coster-Waldau.jpg",
       thumbnailWidth: 220,
-      thumbnailHeight: 327
+      thumbnailHeight: 327,
+      isSelected: true
     },
     {
       name: "Dany",
@@ -123,23 +124,25 @@ const data = {
     },
     {
       name: "Varys",
-      dead: false,
+      dead: true,
       src:
         "https://pixel.nymag.com/imgs/daily/vulture/2017/07/31/31-got-varys.w700.h700.jpg",
       thumbnail:
         "https://pixel.nymag.com/imgs/daily/vulture/2017/07/31/31-got-varys.w700.h700.jpg",
       thumbnailWidth: 700,
-      thumbnailHeight: 700
+      thumbnailHeight: 700,
+      isSelected: true
     },
     {
       name: "Sandor",
-      dead: false,
+      dead: true,
       src:
         "https://i.kinja-img.com/gawker-media/image/upload/s--P5IOcr4w--/c_scale,f_auto,fl_progressive,q_80,w_800/juaornxbgbeuitbgxuwg.jpg",
       thumbnail:
         "https://i.kinja-img.com/gawker-media/image/upload/s--P5IOcr4w--/c_scale,f_auto,fl_progressive,q_80,w_800/juaornxbgbeuitbgxuwg.jpg",
       thumbnailWidth: 800,
-      thumbnailHeight: 450
+      thumbnailHeight: 450,
+      isSelected: true
     },
     {
       name: "Bronn",
@@ -214,33 +217,36 @@ const data = {
     },
     {
       name: "Euron",
-      dead: false,
+      dead: true,
       src:
         "http://start.att.net/exclusive/sites/default/files/Copy%20of%20DID2417407_GOT605_090115_HS_DSC_4681.jpg",
       thumbnail:
         "http://start.att.net/exclusive/sites/default/files/Copy%20of%20DID2417407_GOT605_090115_HS_DSC_4681.jpg",
       thumbnailWidth: 850,
-      thumbnailHeight: 566
+      thumbnailHeight: 566,
+      isSelected: true
     },
     {
       name: "Gregor (The Mountain)",
-      dead: false,
+      dead: true,
       src:
         "https://www.telegraph.co.uk/content/dam/tv/2016/05/18/Robert_Strong_HBO_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwWPzbqljo0rKVyOprQTG3jU.jpg?imwidth=450",
       thumbnail:
         "https://www.telegraph.co.uk/content/dam/tv/2016/05/18/Robert_Strong_HBO_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwWPzbqljo0rKVyOprQTG3jU.jpg?imwidth=450",
       thumbnailWidth: 480,
-      thumbnailHeight: 300
+      thumbnailHeight: 300,
+      isSelected: true
     },
     {
       name: "Cersei",
-      dead: false,
+      dead: true,
       src:
         "https://pbs.twimg.com/profile_images/690345716326109184/uHRmxdrd_400x400.jpg",
       thumbnail:
         "https://pbs.twimg.com/profile_images/690345716326109184/uHRmxdrd_400x400.jpg",
       thumbnailWidth: 256,
-      thumbnailHeight: 256
+      thumbnailHeight: 256,
+      isSelected: true
     },
     {
       name: "Drogon",
@@ -254,13 +260,14 @@ const data = {
     },
     {
       name: "Qyburn",
-      dead: false,
+      dead: true,
       src:
         "https://vignette.wikia.nocookie.net/gameofthrones/images/8/8a/804_Qyburn_Profile.png/revision/latest/scale-to-width-down/350?cb=20190508024406",
       thumbnail:
         "https://vignette.wikia.nocookie.net/gameofthrones/images/8/8a/804_Qyburn_Profile.png/revision/latest/scale-to-width-down/350?cb=20190508024406",
       thumbnailWidth: 350,
-      thumbnailHeight: 492
+      thumbnailHeight: 492,
+      isSelected: true
     },
     {
       name: "Podrick",

@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Gallery from "./Gallery";
 import data from "./resources/data";
@@ -10,12 +11,13 @@ class MainPage extends Component {
     super(props);
     this.state = {
       name: "",
-      images: this.props.images,
+      imagesDead: this.props.images,
       dead: this.filterDead(this.props.images),
+      throne: "No One",
       submitted: false
     };
 
-    this.onSelectImage = this.onSelectImage.bind(this);
+    this.onSelectImageDead = this.onSelectImageDead.bind(this);
     this.putDataToDB = this.putDataToDB.bind(this);
   }
 
@@ -48,8 +50,8 @@ class MainPage extends Component {
     );
   }
 
-  onSelectImage(index, image) {
-    var images = this.state.images.slice();
+  onSelectImageDead(index, image) {
+    var images = this.state.imagesDead.slice();
     var img = images[index];
     if (img.hasOwnProperty("isSelected")) img.isSelected = !img.isSelected;
     else img.isSelected = true;
@@ -57,44 +59,49 @@ class MainPage extends Component {
     img.dead = img.isSelected;
 
     this.setState({
-      images: images,
+      imagesDead: images,
       dead: this.filterDead(images)
     });
   }
 
   filterDead(images) {
-    var dead = images.filter(function(itm) {
-      return itm.dead === true;
-    });
-
-    var names = dead.map(image => {
-      return image.name;
-    });
-    return names;
+    var dead = images
+      .filter(itm => {
+        return itm.dead === true;
+      })
+      .map(image => {
+        return image.name;
+      });
+    return dead;
   }
 
-  // our put method that uses our backend api
-  // to create new query into our data base
-  putDataToDB = name => {
+  putDataToDB = () => {
     this.setState({ submitted: true });
-    const api = "https://got-death-draft-jcallin.structure.sh/api/putData";
+    const api = "https://gotdeathdraft.tk/api/putData";
     if (process.env.NODE_ENV !== "development") {
       axios.post(api, {
-        name: name,
+        name: this.state.name,
         dead: this.state.dead,
+        throne: this.state.throne,
         submissionTime: new Date(new Date().toUTCString())
       });
       this.setState({ submitted: true });
     }
   };
 
+  renderNameChoices = names => {
+    return names.map(name => {
+      return <option key={name.name}>{name.name}</option>;
+    });
+  };
+
   render() {
-    var customOverlay = (
-      <img className="death-overlay" alt="placeholder" src={deathOverlay} />
+    var customOverlayDead = (
+      <img className="thumbnail-overlay" alt="placeholder" src={deathOverlay} />
     );
 
-    var images = this.state.images.map(i => {
-      i.customOverlay = customOverlay;
+    var imagesDead = this.state.imagesDead.map(i => {
+      i.customOverlay = customOverlayDead;
       return i;
     });
 
@@ -125,23 +132,43 @@ class MainPage extends Component {
         <>
           <div className="main-header">The Game of Thrones Death Draft</div>
           <p className="sub-header">
-            Pick who dies in Season 8 Episode 5! Best guess and stats posted
-            after the episode. Submit again next week before the finale.
+            Pick who dies in the show's finale! Pick who sits the Iron Throne at
+            the bottom. Best guesses and stats posted after the finale.
           </p>
+          <p className="sub-header">
+            Congrats to Cewy and Hans who had all 7 deaths correct last week
+            with 0 incorrect guesses!
+          </p>
+          <Link className="sub-header" to="/s8e5-summary">
+            See Season 8 Episode 5 Results
+          </Link>
           <div className="main-page">
-            <div className="image-grid">
+            <div className="grid-gallery-container">
               <Gallery
-                images={images}
+                images={imagesDead}
                 enableLightbox={false}
                 onSelectImage={this.onSelectImage}
-                onClickThumbnail={this.onSelectImage}
+                onClickThumbnail={this.onSelectImageDead}
                 tileViewportStyle={this.tileViewportStyle}
                 thumbnailStyle={this.thumbnailStyle}
               />
             </div>
-
+            <div className="who-will sub-header">
+              Who will sit the Iron Throne?
+            </div>
             <div>
               <form className="name-form">
+                <div className="form-group">
+                  <select
+                    default="No One"
+                    id="inputState"
+                    className="form-control"
+                    onChange={e => this.setState({ throne: e.target.value })}
+                  >
+                    <option key="No One">No One</option>
+                    {this.renderNameChoices(this.state.imagesDead)}
+                  </select>
+                </div>
                 <div className="form-group">
                   <input
                     type="text"
@@ -155,7 +182,7 @@ class MainPage extends Component {
                   <button
                     type="button"
                     className="btn btn-primary submit-btn"
-                    onClick={() => this.putDataToDB(this.state.name)}
+                    onClick={() => this.putDataToDB()}
                   >
                     Submit
                   </button>

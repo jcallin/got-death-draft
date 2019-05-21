@@ -5,12 +5,13 @@ const bodyParser = require("body-parser");
 const logger = require("morgan");
 const Data = require("./data");
 const path = require("path");
+require("dotenv").config();
 
 const port = 80;
 const app = express();
 app.use(cors());
 
-var mongoPassword = process.env.MONGO_PASSWORD;
+const mongoPassword = process.env.MONGO_PASSWORD;
 
 // DB setup
 const dbUri = `mongodb+srv://jcallin:${mongoPassword}@got-death-draft-db-myote.mongodb.net/got-death-draft?retryWrites=true`;
@@ -34,7 +35,7 @@ app.use(logger("dev"));
 // ****** Client Route *******
 // Serve any static files built by React
 app.use(express.static(path.join(__dirname, "client/build")));
-app.get("/", (req, res) => {
+app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "client/build", "index.html"));
 });
 
@@ -45,7 +46,7 @@ app.post("/api/putData", (req, res) => {
   let data = new Data();
   console.log(`Received request: ${req.body}`);
 
-  const { name, dead } = req.body;
+  const { name, dead, throne } = req.body;
 
   if ((!name && name !== 0) || !dead) {
     return res.json({
@@ -53,42 +54,13 @@ app.post("/api/putData", (req, res) => {
       error: "INVALID INPUTS"
     });
   }
-  data.dead = dead;
   data.name = name;
+  data.dead = dead;
+  data.throne = throne;
   data.save(err => {
     if (err) return res.json({ success: false, error: err });
     return res.json({ success: true });
   });
 });
-
-app.get("/api/s8e5-data/json", function(req, res) {
-  console.log("A user requested all json data");
-  Data.find({}, function(err, users) {
-    res.send(users);
-  });
-});
-
-app.get("/api/s8e5-data/csv", function(req, res) {
-  console.log("A user requested all csv data");
-  Data.find({}, function(err, users) {
-    res.send(ConvertToCSV(JSON.stringify(users)));
-  });
-});
-
-// JSON to CSV Converter
-function ConvertToCSV(objArray) {
-  var array = typeof objArray != "object" ? JSON.parse(objArray) : objArray;
-  var str = "";
-
-  for (var i = 0; i < array.length; i++) {
-    var line = "";
-    for (var index in array[i]) {
-      if (line != "") line += ",";
-      line += array[i][index];
-    }
-    str += line + "\r\n";
-  }
-  return str;
-}
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

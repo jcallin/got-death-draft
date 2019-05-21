@@ -29,9 +29,7 @@ Disclaimer: this app was hacked together over some hours in the final weeks of S
 ### Data from S8 E5
 <div>
     <a href="https://plot.ly/~jcallin/4/?share_key=z38Z4aF7ZZ6s0prWwsxmVc" target="_blank" title="Season 8 Episode 5" style="display: block; text-align: center;"><img src="https://plot.ly/~jcallin/4.png?share_key=z38Z4aF7ZZ6s0prWwsxmVc" alt="Season 8 Episode 5" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-    <script data-plotly="jcallin:4" sharekey-plotly="z38Z4aF7ZZ6s0prWwsxmVc" src="https://plot.ly/embed.js" async></script>
 </div>
 <div>
     <a href="https://plot.ly/~jcallin/7/?share_key=HFZCujQcHXmaIieskGs4xk" target="_blank" title="Season 8 Episode 5 Winners" style="display: block; text-align: center;"><img src="https://plot.ly/~jcallin/7.png?share_key=HFZCujQcHXmaIieskGs4xk" alt="Season 8 Episode 5 Winners" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-    <script data-plotly="jcallin:7" sharekey-plotly="HFZCujQcHXmaIieskGs4xk" src="https://plot.ly/embed.js" async></script>
 </div>

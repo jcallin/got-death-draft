@@ -7,7 +7,7 @@ Disclaimer: this app was hacked together over some hours in the final weeks of S
 ## How to run
 
 #### Installing
-__Packages are installed with yarn, run `yarn` in the root, `client/`, and `server/` directories
+__Packages are installed with yarn, run `yarn` in the root, `client/`, and `server/` directories__
 
 #### Overview of the server design
 

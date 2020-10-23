@@ -30,6 +30,7 @@ __Packages are installed with yarn, run `yarn` in the root, `client/`, and `serv
 * From the top level directory, run `structure deploy you-app-name` __make sure you have changed the url of the server as mentioned in the last bullet point__. For example: if your app is hosted at `https://my-death-draft-app-username.structure.sh`, then you will have to hardcode the server as `https://my-death-draft-app-username.structure.sh` in the client UI before deploying.
 
 ### Data from S8 E5
+#### WOW! You guys did it! All 5 top selections were killed off in the season finale!
 <div>
     <a href="https://plot.ly/~jcallin/4/?share_key=z38Z4aF7ZZ6s0prWwsxmVc" target="_blank" title="Season 8 Episode 5" style="display: block; text-align: center;"><img src="https://plot.ly/~jcallin/4.png?share_key=z38Z4aF7ZZ6s0prWwsxmVc" alt="Season 8 Episode 5" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
 </div>
